@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Com.Caching.BackingStore
+{
+    /// <summary>
+    /// This class is used when no backing store is needed to support the caching storage policy.
+    /// Its job is to provide an implementation of a backing store that does nothing, merely enabling
+    /// the cache to provide a strictly in-memory cache.
+    /// </summary>
+    public class NullBackingStore : IBackingStore
+    {
+        /// <summary>
+        /// Always returns 0
+        /// </summary>
+        public int Count
+        {
+            get { return 0; }
+        }
+
+        /// <summary>
+        /// Not used
+        /// </summary>
+        /// <param name="newCacheItem">Not used</param>
+        public void Add(CacheItem newCacheItem)
+        {
+        }
+
+        /// <summary>
+        /// Not used
+        /// </summary>
+        /// <param name="key">Not used</param>
+        public void Remove(string key)
+        {
+        }
+
+        /// <summary>
+        /// Not used
+        /// </summary>
+        /// <param name="key">Not used</param>
+        /// <param name="timestamp">Not used</param>
+        public void UpdateLastAccessedTime(string key, DateTime timestamp)
+        {
+        }
+
+        /// <summary>
+        /// Not used
+        /// </summary>
+        public void Flush()
+        {
+        }
+
+        /// <summary>
+        /// Always returns an empty hash table.
+        /// </summary>
+        /// <returns>Empty hash table</returns>
+        public Hashtable Load()
+        {
+            return new Hashtable();
+        }
+
+        /// <summary>
+        /// Empty dispose implementation
+        /// </summary>
+        public void Dispose()
+        {
+
+        }
+    }
+}
