@@ -1,92 +1,68 @@
- @keyframes slideInLeft {
-  from {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible;
-  }
 
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+
+/* move from / to  */
+
+@-webkit-keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+	from { }
+	to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
 }
 
-.slideInLeft {
-  animation-name: slideInLeft;
+@-webkit-keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveFromLeft {
+	from { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translate3d(100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
+@-webkit-keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); }
+}
+@keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); transform: translateX(100%); }
 }
 
-.slideInRight {
-  animation-name: slideInRight;
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
 }
 
-@keyframes slideOutLeft {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-
-.slideOutLeft {
-  animation-name: slideOutLeft;
-}
-
-@keyframes slideOutRight {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    visibility: hidden;
-    transform: translate3d(100%, 0, 0);
-  }
-}
-
-.slideOutRight {
-  animation-name: slideOutRight;
-}
- 
- .ui-view-container {
+ .ui-view-container2 {
   position: relative;
        
-  [ui-view].ng-enter,
-  [ui-view].ng-leave {
+  &[ui-view].ng-enter,
+  &[ui-view].ng-leave {
     position: absolute;
     left: 0;
     right: 0;
   }
 
-  [ui-view].ng-enter {
-    -webkit-animation: slideInRight 0.5s;
-    animation: slideInRight 0.5s;
+  &[ui-view].ng-enter {
+    -webkit-animation: moveFromRight .6s ease both;
+	  animation: moveFromRight .6s ease both;
   }
   /*[ui-view].ng-enter-active {}*/
 
-  [ui-view].ng-leave {
-    -webkit-animation: slideOutLeft 0.5s;
-    animation: slideOutLeft 0.5s;
+  &[ui-view].ng-leave {
+    -webkit-animation: moveToLeft .6s ease both;
+    animation: moveToLeft .6s ease both;
   }
   /*[ui-view].ng-leave-active {}*/
 
-  [ui-view].ng-enter.back {
-    -webkit-animation: slideInLeft 0.5s;
-    animation: slideInLeft 0.5s;
+  &[ui-view].ng-enter.back {
+   -webkit-animation: moveFromLeft .6s ease both;
+	animation: moveFromLeft .6s ease both;
   }
 
-  [ui-view].ng-leave.back {
-    -webkit-animation: slideOutRight 0.5s;
-    animation: slideOutRight 0.5s;
+  &[ui-view].ng-leave.back {
+   	-webkit-animation: moveToRight .6s ease both;
+	animation: moveToRight .6s ease both;
   }
 }
